@@ -2,7 +2,6 @@ package com.sayan.code.onlinevotingsystem.Service.Implementation;
 
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Election;
-import com.sayan.code.onlinevotingsystem.Entity.Vote;
 import com.sayan.code.onlinevotingsystem.Entity.Voter;
 import com.sayan.code.onlinevotingsystem.Repository.*;
 import com.sayan.code.onlinevotingsystem.Service.UserServices;
@@ -17,7 +16,7 @@ import java.util.List;
 public class UserServicesImpl implements UserServices {
 
     @Autowired
-    private UserRepo userRepo;
+    private VoterRepo voterRepo;
 
     @Autowired
     private VoteRepo voteRepo;
@@ -30,13 +29,13 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public boolean login(String epic_num, String dob) {
-        Voter voter = userRepo.findById(epic_num).orElseThrow();
+        Voter voter = voterRepo.findById(epic_num).orElseThrow();
         return voter.getDob().equals(dob);
     }
 
     @Override
     public boolean logout(String epic_num) {
-        Voter voter = userRepo.findById(epic_num).orElseThrow();
+        Voter voter = voterRepo.findById(epic_num).orElseThrow();
         return true;
 
     }
@@ -53,7 +52,7 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public Object viewProfile(String epic_num) {
-        return userRepo.findById(epic_num);
+        return voterRepo.findById(epic_num);
     }
 
     @Override
@@ -73,6 +72,6 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public String userPhoneNumber(String epic_num) {
-        return userRepo.findById(epic_num).get().getPhone_number();
+        return voterRepo.findById(epic_num).get().getPhone_number();
     }
 }

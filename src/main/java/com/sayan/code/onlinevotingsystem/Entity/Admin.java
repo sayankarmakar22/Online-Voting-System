@@ -2,7 +2,14 @@ package com.sayan.code.onlinevotingsystem.Entity;
 
 import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Admin {
     @Id
