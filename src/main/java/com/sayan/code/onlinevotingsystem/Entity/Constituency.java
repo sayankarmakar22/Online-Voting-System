@@ -1,5 +1,6 @@
 package com.sayan.code.onlinevotingsystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,10 +22,12 @@ public class Constituency {
     private String constituency_name;
 
     @OneToMany(mappedBy = "constituency")
+    @JsonIgnore
     private List<Candidate> candidateList;
 
     @ManyToMany(mappedBy = "constituencies")
-    private List<User> users;
+    @JsonIgnore
+    private List<Voter> voters;
 
 
 }
