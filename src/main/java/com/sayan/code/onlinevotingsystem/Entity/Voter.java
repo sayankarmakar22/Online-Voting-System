@@ -1,5 +1,6 @@
 package com.sayan.code.onlinevotingsystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,9 +39,10 @@ public class Voter {
     @JoinColumn(name = "vote_id")
     private Vote vote_id;
 
-    @ManyToMany
-    @JoinTable(name = "user_constituency")
-    private List<Constituency> constituencies;
+    @ManyToOne
+    @JoinColumn(name = "constituency_id")
+    @JsonIgnore
+    private Constituency constituencies;
 
 
 }
