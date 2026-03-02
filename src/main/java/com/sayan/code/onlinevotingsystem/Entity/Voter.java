@@ -7,11 +7,13 @@ import lombok.*;
 import java.util.List;
 
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+@Table(name = "user")
+public class Voter {
 
     @Id
     private String epic_id;
@@ -33,9 +35,12 @@ public class User {
 
     /* Cardinalities */
     @OneToOne
+    @JoinColumn(name = "vote_id")
     private Vote vote_id;
 
     @ManyToMany
     @JoinTable(name = "user_constituency")
     private List<Constituency> constituencies;
+
+
 }

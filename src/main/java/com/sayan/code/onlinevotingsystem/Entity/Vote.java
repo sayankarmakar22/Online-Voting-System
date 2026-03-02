@@ -1,6 +1,7 @@
 package com.sayan.code.onlinevotingsystem.Entity;
 
 import com.sayan.code.onlinevotingsystem.ENUMS.Status;
+import com.sayan.code.onlinevotingsystem.ENUMS.VoterStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,13 +19,13 @@ public class Vote {
     private String vote_id;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private VoterStatus status;
 
     private Date created_at;
 
     @OneToOne
     @JoinColumn(name="epic_id",nullable = false,unique = true)
-    private User epic_num;
+    private Voter epic_num;
 
     @ManyToOne
     @JoinColumn(name = "election_id")

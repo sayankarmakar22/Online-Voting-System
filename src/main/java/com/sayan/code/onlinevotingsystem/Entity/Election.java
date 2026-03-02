@@ -1,7 +1,8 @@
 package com.sayan.code.onlinevotingsystem.Entity;
 
-import com.sayan.code.onlinevotingsystem.ENUMS.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sayan.code.onlinevotingsystem.ENUMS.Status;
+import com.sayan.code.onlinevotingsystem.ENUMS.VoteType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,15 +20,18 @@ public class Election {
     private String election_id;
 
     @Enumerated(EnumType.STRING)
-    private Role type;
+    private VoteType type;
 
     private Date start_date;
+
     private Date end_date;
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
     private Date created_at;
 
     @OneToMany(mappedBy = "election_id")
+    @JsonIgnore
     private List<Candidate> candidates;
 }

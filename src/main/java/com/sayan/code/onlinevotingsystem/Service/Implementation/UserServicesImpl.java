@@ -1,46 +1,69 @@
 package com.sayan.code.onlinevotingsystem.Service.Implementation;
 
+import com.sayan.code.onlinevotingsystem.Entity.Candidate;
+import com.sayan.code.onlinevotingsystem.Entity.Election;
+import com.sayan.code.onlinevotingsystem.Entity.Vote;
+import com.sayan.code.onlinevotingsystem.Entity.Voter;
+import com.sayan.code.onlinevotingsystem.Repository.*;
 import com.sayan.code.onlinevotingsystem.Service.UserServices;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class UserServicesImpl implements UserServices {
+
+    @Autowired
+    private UserRepo userRepo;
+
+    @Autowired
+    private VoteRepo voteRepo;
+
+    @Autowired
+    private CandidateRepo candidateRepo;
+
+    @Autowired
+    private ElectionRepo electionRepo;
+
     @Override
-    public HttpStatusCode login(String epic_num, String dob) {
-        return null;
+    public boolean login(String epic_num, String dob) {
+        Voter voter = userRepo.findById(epic_num).orElseThrow();
+        return voter.getDob().equals(dob);
     }
 
     @Override
-    public HttpStatusCode logout(String epic_num) {
-        return null;
+    public boolean logout(String epic_num) {
+        Voter voter = userRepo.findById(epic_num).orElseThrow();
+        return true;
+
     }
 
     @Override
-    public List<Object> viewElectionDetails(String constituency_id) {
-        return List.of();
+    public Election viewElectionDetails(String election_id) {
+        return electionRepo.findById(election_id).orElseThrow();
     }
 
     @Override
-    public List<Object> viewCandidateList(String constituency_id) {
-        return List.of();
+    public List<Candidate> viewCandidateList(String constituency_id) {
+        return candidateRepo.findByConstituency_id(constituency_id);
     }
 
     @Override
     public Object viewProfile(String epic_num) {
-        return null;
+        return userRepo.findById(epic_num);
     }
 
     @Override
-    public HttpStatusCode castVote(String epic_num) {
-        return null;
+    public boolean castVote(String epic_num) {
+        return false;
     }
 
     @Override
-    public List<Object> userElectionHistory(String epic_num) {
-        return List.of();
+    public Object userElectionHistory(String vote_id) {
+        return voteRepo.findById(vote_id);
     }
 
     @Override
@@ -50,6 +73,6 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public String userPhoneNumber(String epic_num) {
-        return "";
+        return userRepo.findById(epic_num).get().getPhone_number();
     }
 }
