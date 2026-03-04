@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889642817443",
+    "project_id": "online-voting-system-1234",
+    "storage_bucket": "online-voting-system-1234.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889642817443:android:8a8c226c072b6c2fed2c16",
+        "android_client_info": {
+          "package_name": "com.example.onlinevotingsystem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPQifEeL3UzEj4K7yVPdlmHpWnhd6Xmw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

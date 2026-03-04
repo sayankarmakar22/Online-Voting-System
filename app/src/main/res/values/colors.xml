@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary Colors -->
+    <color name="primaryBlue">#1E88E5</color>
+    <color name="darkBlue">#1565C0</color>
+    <color name="lightBlue">#BBDEFB</color>
+
+    <!-- Accent Colors -->
+    <color name="greenSuccess">#43A047</color>
+    <color name="redAlert">#E53935</color>
+    <color name="orangeAccent">#FB8C00</color>
+
+    <!-- Neutral -->
+    <color name="white">#FFFFFF</color>
+    <color name="lightGrey">#F5F5F5</color>
+    <color name="darkText">#212121</color>
+
+
+
+</resources>
