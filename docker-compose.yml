@@ -1,0 +1,40 @@
+version: '3.8' # Updated to a standard, widely supported compose version
+
+services:
+  mysql:
+    image: mysql
+    container_name: MysqlVote
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: OnlineVoting@2026
+      MYSQL_DATABASE: onlinevote
+    ports:
+      - "3308:3306"
+    volumes:
+      - vol-mysql2:/var/lib/mysql
+    # 1. Add a healthcheck to test if MySQL is actually ready
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pOnlineVoting@2026"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: onlinevote:1.0
+    container_name: VotingApp
+    ports:
+      - "9061:9061"
+    depends_on:
+      mysql:
+        # 2. Tell the app to wait until the MySQL healthcheck passes
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 9061
+      DB_HOST: mysql
+      DB_PORT: 3306 # 3. Explicitly set the internal Docker port
+    volumes:
+      - vol-app:/app
+
+volumes:
+  vol-app:
+  vol-mysql2:
