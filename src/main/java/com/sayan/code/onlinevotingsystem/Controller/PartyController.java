@@ -15,8 +15,8 @@ public class PartyController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addParty(@RequestBody Party party) {
-        partyServices.addParty(party);
-        return new ResponseEntity<>("Party added successfully", HttpStatus.CREATED);
+        String addParty = partyServices.addParty(party);
+        return new ResponseEntity<>(addParty, HttpStatus.CREATED);
     }
     @GetMapping("/view/{party_id}")
     public ResponseEntity<Party> viewParty(@PathVariable String party_id) {

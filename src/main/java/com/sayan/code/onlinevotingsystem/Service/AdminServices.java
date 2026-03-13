@@ -7,7 +7,7 @@ import com.sayan.code.onlinevotingsystem.Entity.Voter;
 import java.util.List;
 
 public interface AdminServices {
-    boolean register(Admin admin);
+    String register(Admin admin);
     boolean deletion(String id);
     Admin viewAdmin(String id);
     boolean login(String id, String password);

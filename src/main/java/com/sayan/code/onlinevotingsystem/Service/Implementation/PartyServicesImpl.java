@@ -15,8 +15,7 @@ public class PartyServicesImpl implements PartyServices {
     @Override
     public String addParty(Party party) {
         party.setParty_id(UUID.randomUUID().toString().substring(0, 4));
-        partyRepo.save(party);
-        return "Added Party";
+        return partyRepo.save(party).getParty_id();
     }
 
     @Override

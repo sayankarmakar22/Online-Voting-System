@@ -32,13 +32,10 @@ public class AdminServicesImpl implements AdminServices {
     @Autowired
     private VoterRepo voterRepo;
     @Override
-    public boolean register(Admin admin) {
+    public String register(Admin admin) {
         admin.setAdmin_id(UUID.randomUUID().toString().substring(0, 8));
         admin.setRole(Role.ADMIN);
-        if(adminRepo.save(admin).equals(admin)){
-            return true;
-        }
-        return false;
+        return adminRepo.save(admin).getAdmin_id();
     }
 
     @Override

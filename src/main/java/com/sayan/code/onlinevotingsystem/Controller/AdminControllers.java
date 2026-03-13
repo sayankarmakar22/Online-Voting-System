@@ -20,10 +20,10 @@ public class AdminControllers {
 
 
     @PostMapping("/register")
-    public ResponseEntity<HttpStatusCode> register(@RequestBody Admin admin) {
+    public ResponseEntity<String> register(@RequestBody Admin admin) {
         try{
-            adminServices.register(admin);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            String register = adminServices.register(admin);
+            return new ResponseEntity<>(register,HttpStatus.ACCEPTED);
         }
         catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -4,7 +4,7 @@ import com.sayan.code.onlinevotingsystem.Entity.Election;
 import com.sayan.code.onlinevotingsystem.Entity.VoteResult;
 
 public interface ElectionServices {
-    boolean addElection(Election election);
+    String addElection(Election election);
     Election getElection(String id);
     String closeElection(String id);
     Election updateElection(Election election);
