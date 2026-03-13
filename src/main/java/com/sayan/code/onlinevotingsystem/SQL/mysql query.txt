@@ -1,0 +1,65 @@
+insert into constituency (constituency_id, constituency_name)
+VALUES
+    ("14","Ranaghat"),
+    ("15","Barrackpore"),
+    ("12","Krishnanagar");
+
+
+select * from constituency;
+
+insert into user (epic_id, name, dob, phone_number, address,role, constituency_id)
+VALUES
+    ("426614174000","Aarav Patel","12-04-1985","9876500001","12 MG Road Bengaluru",'VOTER',"14"),
+    ("426614174001","Vivaan Sharma","1990-08-23","9876500002","45 Park Street Kolkata",'VOTER',"14"),
+    ("426614174002","Aditya Singh","1982-11-05","9876500003","78 Marine Drive Mumbai",'VOTER',"12");
+
+select * from user;
+
+
+
+desc election;
+
+desc candidate;
+desc election;
+desc party;
+
+insert into election (election_id, created_at, end_date, start_date, status, type)
+VALUES
+    ("1234N",'2026-03-02','2026-05-15','2026-04-15','DATE_PUBLISHED','NATIONAL_LEVEL');
+
+select * from election;
+
+insert into party (party_id, party_name)
+VALUES
+    ("1A","BJP"),
+    ("1B","TMC"),
+    ("1C","Congress");
+
+select * from party;
+
+insert into candidate (cand_id, address, dob, name, role, constituency_id, election_id, party_id)
+values
+    ("2026N23","ranaghat",'13-06-1999','Rakhesh Saha','CANDIDATE',"14","1234N","1A");
+
+select * from candidate;
+
+desc vote;
+select * from vote;
+
+insert into vote (vote_id, created_at, status, election_id, epic_id, party_name)
+VALUES
+    ('2026V000','2026-03-02','VOTED',"1234N","426614174000","1B");
+
+select * from vote where epic_id = "426614174000";
+
+
+
+
+
+
+
+
+
+
+
+
