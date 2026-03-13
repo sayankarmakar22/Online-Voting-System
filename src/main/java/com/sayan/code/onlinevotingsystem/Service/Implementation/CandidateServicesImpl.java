@@ -30,8 +30,7 @@ public class CandidateServicesImpl implements CandidateServices {
         candidate.setParty(partyRepo.findById(party_id).get());
         candidate.setElection_id(electionRepo.findById(elec_id).get());
         candidate.setConstituency(constituencyRepo.findById(cons_id).get());
-        candidateRepo.save(candidate);
-        return "Candidate added";
+        return candidateRepo.save(candidate).getCand_id();
     }
 
 

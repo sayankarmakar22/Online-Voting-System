@@ -17,11 +17,10 @@ public class ElectionServiceImpl implements ElectionServices {
 
 
     @Override
-    public boolean addElection(Election election) {
+    public String addElection(Election election) {
         election.setElection_id(UUID.randomUUID().toString().substring(0, 8));
         election.setCreated_at(new Date());
-        electionRepo.save(election);
-            return true;
+        return electionRepo.save(election).getElection_id();
     }
 
     @Override
