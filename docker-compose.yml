@@ -20,7 +20,7 @@ services:
       retries: 5
 
   app:
-    image: onlinevote:1.0
+    image: onlinevote:1.0.1
     container_name: VotingApp
     ports:
       - "9061:9061"
