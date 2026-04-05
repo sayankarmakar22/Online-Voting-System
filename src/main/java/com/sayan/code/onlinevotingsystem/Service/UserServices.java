@@ -2,7 +2,6 @@ package com.sayan.code.onlinevotingsystem.Service;
 
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Election;
-import com.sayan.code.onlinevotingsystem.Entity.Vote;
 
 import java.util.List;
 

@@ -11,5 +11,8 @@ public interface AdminRepo extends JpaRepository<Admin, String> {
         @Query(value = "select admin_password from admin where admin_id=:id",nativeQuery = true)
         String getPassword(String id);
 
+        @Query(value = "update admin set active = 'FALSE' where admin_id=:id",nativeQuery = true)
+        int markActiveFalse(String id);
+
 
 }

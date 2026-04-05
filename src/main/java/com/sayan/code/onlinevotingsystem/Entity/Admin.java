@@ -1,5 +1,6 @@
 package com.sayan.code.onlinevotingsystem.Entity;
 
+import com.sayan.code.onlinevotingsystem.ENUMS.ActiveStatus;
 import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,11 @@ public class Admin {
     @Column(nullable = false,length = 2000)
     private String admin_password;
 
-    @Column(unique = true,nullable = false,length = 300)
+    @Enumerated(EnumType.STRING)
+    private ActiveStatus active;
+
+
+    @Column(nullable = false,length = 300)
     private String admin_address;
 
     @Column(unique = true,nullable = false,length = 15)

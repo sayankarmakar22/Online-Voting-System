@@ -1,0 +1,677 @@
+{
+  "info": {
+    "_postman_id": "0e1515ac-54e0-483c-8415-58653cdc4a94",
+    "name": "OnlineVoting",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15636280"
+  },
+  "item": [
+    {
+      "name": "Users API's",
+      "item": [
+        {
+          "name": "UserLogin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/login/426614174000/12-04-1985",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "login",
+                "426614174000",
+                "12-04-1985"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UserLogout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/logout/426614174000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "logout",
+                "426614174000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/profile/426614174000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "profile",
+                "426614174000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Phone Number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/phone-number/426614174000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "phone-number",
+                "426614174000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Election Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/election-details/1234N",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "election-details",
+                "1234N"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "candidate list",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/candidate-list/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "candidate-list",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Vote History",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/users/history/2026V000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "users",
+                "history",
+                "2026V000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin's API's",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"admin_name\" : \"Rahul Gandhi\",\r\n    \"admin_password\" : \"Rahul@80\",\r\n    \"admin_address\" : \"India\",\r\n    \"admin_phone\" : \"9876543210\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/admin/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "admin",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Admin Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/admin/delete/1287b1d3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "admin",
+                "delete",
+                "1287b1d3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "View Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://192.168.29.154:9061/v1/online-election/admin/view/e12f8091",
+              "protocol": "http",
+              "host": [
+                "192",
+                "168",
+                "29",
+                "154"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "admin",
+                "view",
+                "e12f8091"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/admin/login/dcd7e41e/Modi@80",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "admin",
+                "login",
+                "dcd7e41e",
+                "Modi@80"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all candidate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/admin/get/candidate/constituency/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "admin",
+                "get",
+                "candidate",
+                "constituency",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all voter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/admin/get/voter/constituency/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "admin",
+                "get",
+                "voter",
+                "constituency",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Election APIs",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"type\": \"STATE_LEVEL\",\r\n    \"start_date\" : \"2026-05-12\",\r\n    \"end_date\":\"2026-07-12\",\r\n    \"status\" : \"DATE_PUBLISHED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/election/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "election",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "edit",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"election_id\" : \"9b0a48e7\",\r\n    \"type\": \"STATE_LEVEL\",\r\n    \"start_date\" : \"2026-05-12\",\r\n    \"end_date\":\"2026-07-12\",\r\n    \"status\" : \"ON_GOING\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/election/edit",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "election",
+                "edit"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"election_id\" : \"9b0a48e7\",\r\n    \"type\": \"STATE_LEVEL\",\r\n    \"start_date\" : \"2026-05-12\",\r\n    \"end_date\":\"2026-07-12\",\r\n    \"status\" : \"ON_GOING\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/election/view/d3ed8952",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "election",
+                "view",
+                "d3ed8952"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "close election",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/election/close/9b0a48e7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "election",
+                "close",
+                "9b0a48e7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "publish",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"election_id\" : \"9b0a48e7\",\r\n    \"type\": \"STATE_LEVEL\",\r\n    \"start_date\" : \"2026-05-12\",\r\n    \"end_date\":\"2026-07-12\",\r\n    \"status\" : \"ON_GOING\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/election/publish/9b0a48e7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "election",
+                "publish",
+                "9b0a48e7"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Party",
+      "item": [
+        {
+          "name": "add",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"party_name\" : \"TIU-BCA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/party/add",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "party",
+                "add"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://192.168.29.154:9061/v1/online-election/party/view/1B",
+              "protocol": "http",
+              "host": [
+                "192",
+                "168",
+                "29",
+                "154"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "party",
+                "view",
+                "1B"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UPDATE",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"party_id\":\"1A\",\r\n    \"party_name\":\"BHARATIYA JANATA PARTY\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/party/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "party",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"party_id\":\"1A\",\r\n    \"party_name\":\"BHARATIYA JANATA PARTY\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/party/delete/52ba",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "party",
+                "delete",
+                "52ba"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Candidate",
+      "item": [
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/candidate/view/6027a",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "candidate",
+                "view",
+                "6027a"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Narendra Modi\",\r\n    \"address\": \"India\",\r\n    \"dob\": \"01-01-1990\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9061/v1/online-election/candidate/add/1A/15/1234N",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9061",
+              "path": [
+                "v1",
+                "online-election",
+                "candidate",
+                "add",
+                "1A",
+                "15",
+                "1234N"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

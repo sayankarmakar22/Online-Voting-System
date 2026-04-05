@@ -2,7 +2,6 @@ package com.sayan.code.onlinevotingsystem.Controller;
 
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Election;
-import com.sayan.code.onlinevotingsystem.Entity.Vote;
 import com.sayan.code.onlinevotingsystem.Service.Implementation.UserServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
