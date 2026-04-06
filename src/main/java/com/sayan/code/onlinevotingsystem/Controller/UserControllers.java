@@ -3,6 +3,7 @@ package com.sayan.code.onlinevotingsystem.Controller;
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Election;
 import com.sayan.code.onlinevotingsystem.Service.Implementation.UserServicesImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/online-election/users")
+@RequestMapping("/v2/online-election/users")
+
 public class UserControllers {
 
     @Autowired

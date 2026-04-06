@@ -1,6 +1,6 @@
 package com.sayan.code.onlinevotingsystem.Service;
 
-import DTOs.DTOAdmin;
+import com.sayan.code.onlinevotingsystem.DTOs.DTOAdmin;
 import com.sayan.code.onlinevotingsystem.Entity.Admin;
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Voter;

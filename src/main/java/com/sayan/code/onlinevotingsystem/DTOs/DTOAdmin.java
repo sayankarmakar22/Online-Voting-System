@@ -1,4 +1,4 @@
-package DTOs;
+package com.sayan.code.onlinevotingsystem.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

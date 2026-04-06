@@ -1,6 +1,6 @@
 package com.sayan.code.onlinevotingsystem.Service.Implementation;
 
-import DTOs.DTOAdmin;
+import com.sayan.code.onlinevotingsystem.DTOs.DTOAdmin;
 import com.sayan.code.onlinevotingsystem.ENUMS.ActiveStatus;
 import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import com.sayan.code.onlinevotingsystem.Entity.Admin;
@@ -19,9 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
