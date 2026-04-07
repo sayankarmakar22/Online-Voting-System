@@ -72,6 +72,7 @@ public class AdminControllers {
     @PostMapping("/logout/{admin_id}")
     public ResponseEntity<HttpStatusCode> logout(@PathVariable String admin_id, HttpSession session) {
         if(adminServices.logout(admin_id)){
+            session.removeAttribute("Admin ID");
             session.invalidate();
             log.info("Logout successful" + LocalDateTime.now());
             log.info("Delete Session " + LocalDateTime.now());

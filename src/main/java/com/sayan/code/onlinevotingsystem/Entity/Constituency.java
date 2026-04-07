@@ -25,7 +25,7 @@ public class Constituency {
     @JsonIgnore
     private List<Candidate> candidateList;
 
-    @OneToMany(mappedBy = "constituencies")
+    @OneToMany(mappedBy = "constituency")
     private List<Voter> voters;
 
 

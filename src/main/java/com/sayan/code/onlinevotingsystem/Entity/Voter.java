@@ -6,9 +6,6 @@ import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
-
 
 @Data
 @NoArgsConstructor
@@ -46,7 +43,7 @@ public class Voter {
     @ManyToOne
     @JoinColumn(name = "constituency_id")
     @JsonIgnore
-    private Constituency constituencies;
+    private Constituency constituency;
 
 
 }
