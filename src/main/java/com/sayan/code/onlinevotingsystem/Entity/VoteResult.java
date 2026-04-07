@@ -22,6 +22,7 @@ public class VoteResult {
 
     @Column(nullable = false,updatable = false)
     private BigInteger count;
+
     private Date created_at;
 
     @OneToOne

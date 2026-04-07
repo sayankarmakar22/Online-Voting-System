@@ -1,9 +1,12 @@
 package com.sayan.code.onlinevotingsystem.Controller;
 
+import com.sayan.code.onlinevotingsystem.DTOs.DTOVoter;
+import com.sayan.code.onlinevotingsystem.DTOs.RegisterVoterDTO;
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Election;
-import com.sayan.code.onlinevotingsystem.Entity.Vote;
 import com.sayan.code.onlinevotingsystem.Service.Implementation.UserServicesImpl;
+import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -13,33 +16,94 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/online-election/users")
+@RequestMapping("/v2/online-election/users")
+@Slf4j
 public class UserControllers {
 
     @Autowired
     private UserServicesImpl userServicesImpl;
 
     @PostMapping("/login/{epic_num}/{dob}")
-    public ResponseEntity<HttpStatusCode> userLogin(@PathVariable String epic_num,  @PathVariable String dob){
+    public ResponseEntity<String> userLogin(
+            @PathVariable String epic_num,
+            @PathVariable String dob,
+            HttpSession session)
+    {
             boolean login = userServicesImpl.login(epic_num, dob);
             if (login) {
-                return new ResponseEntity<>(HttpStatus.ACCEPTED);
+                log.info("Voter Login : ", epic_num );
+                session.setAttribute("Voter_EpicID", epic_num);
+                session.setMaxInactiveInterval(600);
+                log.info("Login Succeed", session.getAttribute("Voter_EpicID").toString());
+                return new ResponseEntity<>("Login Succeed",HttpStatus.ACCEPTED);
             }
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            log.error("Voter Login Failed", epic_num );
+            return new ResponseEntity<>("Login Failed",HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/logout/{epic_num}")
-    public ResponseEntity<HttpStatusCode> userLogout(@PathVariable String epic_num){
-        boolean logout = userServicesImpl.logout(epic_num);
-        if(logout){
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    @PostMapping("/logout")
+    public ResponseEntity<String> userLogout(
+            HttpSession session)
+    {
+        try{
+            log.info("Starting logout process");
+            log.info("Voter_EpicID : ", session.getAttribute("Voter_EpicID").toString());
+            boolean logout = userServicesImpl.logout(session.getAttribute("Voter_EpicID").toString());
+            if(logout){
+                log.info("Voter Logout Succeed " + session.getAttribute("Voter_EpicID").toString());
+                return new ResponseEntity<>("Logout Succeed",HttpStatus.ACCEPTED);
+            }
         }
-        else {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        catch (Exception e) {
+                log.error("Voter Logout Failed" + session.getAttribute("Voter_EpicID").toString());
+                return new ResponseEntity<>("Logout Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        finally {
+            session.removeAttribute("Voter_EpicID");
+            session.invalidate();
+        }
+        return null;
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<DTOVoter> viewProfile(
+            HttpSession session)
+    {
+        try{
+            DTOVoter userProfile = userServicesImpl
+                    .viewProfile(
+                            session
+                                    .getAttribute("Voter_EpicID")
+                                    .toString()
+                    );
+            log.info("Viewing Voter_EpicID : ", session.getAttribute("Voter_EpicID").toString());
+            return new ResponseEntity<>(userProfile,HttpStatus.FOUND);
+        }
+        catch (Exception e){
+            log.error("error in viewProfile" + session.getAttribute("Voter_EpicID").toString());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PostMapping("/register")
+    public ResponseEntity<DTOVoter> userRegister(
+            @RequestBody RegisterVoterDTO registerVoterDTO)
+    {
+        try{
+            log.info("Onboarding Voter : {}", registerVoterDTO);
+            DTOVoter registeredVoter = userServicesImpl.registerVoter(registerVoterDTO);
+            log.info("Registered Voter" ,registeredVoter.getEpic_id() );
+            return new ResponseEntity<>(registeredVoter, HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            log.error("Registration Epic ID : ", e.getMessage());
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
     @GetMapping("/election-details/{election_id}")
-    public ResponseEntity<Election> viewElectionDetails(@PathVariable String election_id){
+    public ResponseEntity<Election> viewElectionDetails(
+            @PathVariable String election_id)
+    {
         try {
             Election viewElectionDetails = userServicesImpl.viewElectionDetails(election_id);
             return new ResponseEntity<>(viewElectionDetails, HttpStatus.OK);
@@ -48,10 +112,16 @@ public class UserControllers {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/candidate-list/{constituency_id}")
-    public ResponseEntity<List<Candidate>> viewCandidateList(@PathVariable String constituency_id){
+    @GetMapping("/candidate-list")
+    public ResponseEntity<List<Candidate>> viewCandidateList(
+            HttpSession session)
+    {
         try{
-            List<Candidate> viewCandidateList = userServicesImpl.viewCandidateList(constituency_id);
+            List<Candidate> viewCandidateList =
+                    userServicesImpl.viewCandidateList
+                            (session.getAttribute("Voter_EpicID")
+                                    .toString());
+
             return new ResponseEntity<>(viewCandidateList, HttpStatus.OK);
         }
         catch (Exception e){
@@ -59,41 +129,45 @@ public class UserControllers {
         }
     }
 
-    @GetMapping("/profile/{epic_num}")
-    public ResponseEntity<Object> viewProfile(@PathVariable String epic_num){
-        try{
-            Object userProfile = userServicesImpl.viewProfile(epic_num);
-            return new ResponseEntity<>(userProfile,HttpStatus.FOUND);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 
-    @PostMapping("/cast-vote/{epic_num}")
-    public ResponseEntity<HttpStatusCode> castVote(@PathVariable String epic_num){
+    @PostMapping("/cast-vote")
+    public ResponseEntity<HttpStatusCode> castVote(
+            HttpSession session)
+    {
         try{
-            boolean castVote = userServicesImpl.castVote(epic_num);
+            boolean castVote = userServicesImpl.castVote(session.getAttribute("Voter_EpicID").toString());
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }
         catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/history/{vote_id}")
-    public ResponseEntity<Object> viewHistory(@PathVariable String vote_id){
+    @GetMapping("/history")
+    public ResponseEntity<Object> viewHistory(
+            HttpSession session)
+    {
             try{
-                Object userElectionHistory = userServicesImpl.userElectionHistory(vote_id);
+                Object userElectionHistory = userServicesImpl
+                        .userElectionHistory(session
+                                .getAttribute("Voter_EpicID")
+                                .toString()
+                        );
                 return new ResponseEntity<>(userElectionHistory,HttpStatus.FOUND);
             }
             catch (Exception e){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
     }
-    @GetMapping("/result/{constituency_id}")
-    public ResponseEntity<List<Object>> result(@PathVariable String constituency_id){
+    @GetMapping("/result")
+    public ResponseEntity<List<Object>> result(
+            HttpSession session)
+    {
         try{
-            List<Object> viewResult = userServicesImpl.ViewResult(constituency_id);
+            List<Object> viewResult = userServicesImpl.ViewResult(
+                    session.
+                            getAttribute("Voter_EpicID").
+                            toString()
+            );
             return new ResponseEntity<>(viewResult,HttpStatus.OK);
         }
         catch (Exception e){
@@ -101,10 +175,12 @@ public class UserControllers {
         }
     }
 
-    @GetMapping("/phone-number/{epic_num}")
-    public ResponseEntity<String> getUserPhoneNumber(@PathVariable String epic_num){
+    @GetMapping("/phone-number")
+    public ResponseEntity<String> getUserPhoneNumber(
+            HttpSession session)
+    {
         try{
-            String userPhoneNumber = userServicesImpl.userPhoneNumber(epic_num);
+            String userPhoneNumber = userServicesImpl.userPhoneNumber(session.getAttribute("Voter_EpicID").toString());
             return new ResponseEntity<>(userPhoneNumber,HttpStatus.FOUND);
         }
         catch (Exception e){

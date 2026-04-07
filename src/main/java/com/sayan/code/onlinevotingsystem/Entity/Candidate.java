@@ -1,12 +1,11 @@
 package com.sayan.code.onlinevotingsystem.Entity;
 
+import com.sayan.code.onlinevotingsystem.ENUMS.ActiveStatus;
 import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @SuppressWarnings("ALL")
 @Data
@@ -32,6 +31,9 @@ public class Candidate {
     @ManyToOne
     @JoinColumn(name = "party_id")
     private Party party;
+
+    @Enumerated(EnumType.STRING)
+    private ActiveStatus active;
 
     @ManyToOne
     @JoinColumn(name = "constituency_id")
