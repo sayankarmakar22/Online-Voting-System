@@ -14,7 +14,7 @@ public interface VoterRepo extends JpaRepository<Voter, String> {
 //    @Query(name = "select * from user where epic_id in (select voters_epic_id from user_constituency where constituencies_constituency_id=:id)", nativeQuery = true)
 //    List<Voter> getAllVoter(@Param("id") String id);
 
-    @Query(value = "select * from user where constituency_id =:consId",nativeQuery = true)
+    @Query(value = "select * from voter where constituency_id =:consId",nativeQuery = true)
     List<Voter> getAllVoterByConId(@Param("consId") String consId);
 
 }
