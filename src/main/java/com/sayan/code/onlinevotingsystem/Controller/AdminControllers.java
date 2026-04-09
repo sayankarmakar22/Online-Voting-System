@@ -45,38 +45,72 @@ public class AdminControllers {
             }
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    @GetMapping("/view/{admin_id}")
-    public ResponseEntity<DTOAdmin> view(@PathVariable String admin_id) {
+    @GetMapping("/view")
+    public ResponseEntity<DTOAdmin> view(
+            HttpSession session)
+    {
+        String admin_id = (String) session.getAttribute("AdminID");
         try {
+            log.info("Session ID : " , session.getId());
             log.info("Admin view: " + admin_id + LocalDateTime.now());
             DTOAdmin viewAdmin = adminServices.viewAdmin(admin_id);
             return new ResponseEntity<>(viewAdmin,HttpStatus.ACCEPTED);
         }
         catch (Exception e){
+            log.info("Session ID : " , session.getId());
             log.info("Error while viewing admin : " + admin_id + LocalDateTime.now());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
     }
     @PostMapping("/login/{id}/{password}")
-    public ResponseEntity<HttpStatusCode> login(@PathVariable String id, @PathVariable String password, HttpSession session) {
-        log.info("Login " + id);
+    public ResponseEntity<String> login(
+            @PathVariable String id,
+            @PathVariable String password,
+            HttpSession session)
+
+    {
+        try{
+            log.info("Login " + id);
+            log.info("Session ID : " + session.getId());
             if(adminServices.login(id, password)) {
                 log.info("Login successful"+ LocalDateTime.now());
-                session.setAttribute("Admin ID", id);
+                session.setAttribute("AdminID", id);
                 session.setMaxInactiveInterval(1800);
-                return new ResponseEntity<>(HttpStatus.ACCEPTED);
+                return new ResponseEntity<>("Login Succeed",HttpStatus.ACCEPTED);
             }
-            log.info("Login failed"+ LocalDateTime.now());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        catch (Exception e){
+            log.info("Session ID : " + session.getId());
+            log.info("Error while login " + id + LocalDateTime.now());
+            return new ResponseEntity<>("Login Failed",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        log.info("Login failed"+ LocalDateTime.now());
+
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    @PostMapping("/logout/{admin_id}")
-    public ResponseEntity<HttpStatusCode> logout(@PathVariable String admin_id, HttpSession session) {
-        if(adminServices.logout(admin_id)){
-            session.removeAttribute("Admin ID");
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(
+            HttpSession session)
+    {
+        String admin_id = (String) session.getAttribute("AdminID");
+        try{
+            log.info("Session ID : " , session.getId());
+            if(adminServices.logout(admin_id)) {
+                log.info("Logout successful" + LocalDateTime.now());
+                return new ResponseEntity<>("Logout Succeed",HttpStatus.ACCEPTED);
+            }
+        }
+        catch (Exception e){
+            log.info("Session ID : " , session.getId());
+            log.info("Error while Logout " + admin_id + LocalDateTime.now());
+            return new ResponseEntity<>("Logout failed ",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        finally {
+            log.info("Session ID : " , session.getId());
+            log.info("Deleting Session for : " + admin_id + LocalDateTime.now());
+            session.removeAttribute("AdminID");
             session.invalidate();
-            log.info("Logout successful" + LocalDateTime.now());
-            log.info("Delete Session " + LocalDateTime.now());
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
