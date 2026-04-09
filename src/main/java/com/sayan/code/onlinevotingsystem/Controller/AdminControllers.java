@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@RestController()
+@RestController
 @RequestMapping("/v2/online-election/admin")
 @Slf4j
 public class AdminControllers {
