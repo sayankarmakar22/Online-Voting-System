@@ -15,4 +15,5 @@ public interface AdminServices {
     boolean logout(String id);
     List<Candidate> getAllCandidatesByConstituency(String constituency_id);
     List<Voter> getAllVoterByConstituency(String constituency_id);
+    List<DTOAdmin> getAllAdmins();
 }
