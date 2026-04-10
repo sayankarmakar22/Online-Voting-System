@@ -125,4 +125,9 @@ public class AdminControllers {
         return new ResponseEntity<>(adminServices.getAllVoterByConstituency(constituency_id), HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<DTOAdmin>> getAll() {
+        return new ResponseEntity<>(adminServices.getAllAdmins(), HttpStatus.ACCEPTED);
+    }
+
 }

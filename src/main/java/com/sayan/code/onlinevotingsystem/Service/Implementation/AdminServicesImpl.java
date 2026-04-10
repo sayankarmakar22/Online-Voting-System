@@ -19,13 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 @Slf4j
 public class AdminServicesImpl implements AdminServices {
-    private static final Logger log = LoggerFactory.getLogger(AdminServicesImpl.class);
+
     @Autowired
     private AdminRepo adminRepo;
 
@@ -103,6 +104,19 @@ public class AdminServicesImpl implements AdminServices {
     public List<Voter> getAllVoterByConstituency(String constituency_id) {
         log.info("Starting the getAllVotesByConstituency" + LocalDateTime.now());
         return voterRepo.getAllVoterByConId(constituency_id);
+    }
+
+    @Override
+    public List<DTOAdmin> getAllAdmins() {
+        return adminRepo.findAll()
+                .stream()
+                .map(admin -> new DTOAdmin(
+                        admin.getAdmin_id(),
+                        admin.getAdmin_name(),
+                        admin.getAdmin_address(),
+                        admin.getAdmin_phone()
+                ))
+                .toList();
     }
 
 }
