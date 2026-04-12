@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/online-election/election")
+@RequestMapping("/v2/online-election/election")
 public class ElectionControllers {
     @Autowired
     private ElectionServiceImpl electionService;
