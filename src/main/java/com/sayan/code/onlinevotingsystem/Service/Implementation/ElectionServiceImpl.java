@@ -46,8 +46,6 @@ public class ElectionServiceImpl implements ElectionServices {
             election.setCreated_at(new Date());
             return electionRepo.save(election);
         }
-
-
         return null;
     }
 

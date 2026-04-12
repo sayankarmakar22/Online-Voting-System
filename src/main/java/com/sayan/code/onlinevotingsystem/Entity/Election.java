@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Election {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @CreatedDate
     private Date created_at;
 
     @OneToMany(mappedBy = "election_id")
