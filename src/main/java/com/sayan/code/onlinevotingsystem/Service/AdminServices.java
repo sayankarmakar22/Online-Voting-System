@@ -10,7 +10,7 @@ import java.util.List;
 public interface AdminServices {
     String register(Admin admin);
     boolean deletion(String id);
-    DTOAdmin viewAdmin(String id);
+    DTOAdmin viewAdmin(String id,String type);
     boolean login(String id, String password);
     boolean logout(String id);
     List<Candidate> getAllCandidatesByConstituency(String constituency_id);

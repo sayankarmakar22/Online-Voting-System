@@ -1,0 +1,146 @@
+2026-04-12T05:51:50.576+05:30  INFO 8532 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Starting OnlineVotingSystemApplication using Java 21.0.10 with PID 8532 (D:\Projects\Online-Voting-System\target\classes started by sayan in D:\Projects\Online-Voting-System)
+2026-04-12T05:51:50.579+05:30  INFO 8532 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-04-12T05:51:50.759+05:30  WARN 8532 --- [Online-Voting-System] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.sayan.code.onlinevotingsystem.OnlineVotingSystemApplication]
+2026-04-12T05:51:50.791+05:30 ERROR 8532 --- [Online-Voting-System] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.sayan.code.onlinevotingsystem.OnlineVotingSystemApplication]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:251) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:197) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:165) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:416) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:289) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:788) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:606) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.5.jar:3.2.5]
+	at com.sayan.code.onlinevotingsystem.OnlineVotingSystemApplication.main(OnlineVotingSystemApplication.java:10) ~[classes/:na]
+Caused by: java.io.FileNotFoundException: class path resource [com/sayan/code/onlinevotingsystem/Controller/AdminControllers.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:86) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:73) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:188) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:314) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:246) ~[spring-context-6.1.6.jar:6.1.6]
+	... 15 common frames omitted
+
+2026-04-12T05:54:26.406+05:30  INFO 28404 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Starting OnlineVotingSystemApplication using Java 21.0.10 with PID 28404 (D:\Projects\Online-Voting-System\target\classes started by sayan in D:\Projects\Online-Voting-System)
+2026-04-12T05:54:26.407+05:30  INFO 28404 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-04-12T05:54:26.915+05:30  INFO 28404 --- [Online-Voting-System] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-12T05:54:26.974+05:30  INFO 28404 --- [Online-Voting-System] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 8 JPA repository interfaces.
+2026-04-12T05:54:27.314+05:30  INFO 28404 --- [Online-Voting-System] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9061 (http)
+2026-04-12T05:54:27.326+05:30  INFO 28404 --- [Online-Voting-System] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-12T05:54:27.327+05:30  INFO 28404 --- [Online-Voting-System] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-12T05:54:27.367+05:30  INFO 28404 --- [Online-Voting-System] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-12T05:54:27.368+05:30  INFO 28404 --- [Online-Voting-System] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 923 ms
+2026-04-12T05:54:27.486+05:30  INFO 28404 --- [Online-Voting-System] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-12T05:54:27.542+05:30  INFO 28404 --- [Online-Voting-System] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-12T05:54:27.571+05:30  INFO 28404 --- [Online-Voting-System] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-12T05:54:27.776+05:30  INFO 28404 --- [Online-Voting-System] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-12T05:54:27.798+05:30  INFO 28404 --- [Online-Voting-System] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-12T05:54:27.916+05:30  INFO 28404 --- [Online-Voting-System] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44384b4a
+2026-04-12T05:54:27.918+05:30  INFO 28404 --- [Online-Voting-System] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-12T05:54:27.967+05:30  WARN 28404 --- [Online-Voting-System] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-12T05:54:28.738+05:30  INFO 28404 --- [Online-Voting-System] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-12T05:54:28.828+05:30  INFO 28404 --- [Online-Voting-System] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-12T05:54:28.990+05:30  INFO 28404 --- [Online-Voting-System] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-12T05:54:29.078+05:30  WARN 28404 --- [Online-Voting-System] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-12T05:54:29.347+05:30  INFO 28404 --- [Online-Voting-System] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9061 (http) with context path ''
+2026-04-12T05:54:29.352+05:30  INFO 28404 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Started OnlineVotingSystemApplication in 3.29 seconds (process running for 3.672)
+2026-04-12T05:55:33.480+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-12T05:55:33.480+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-12T05:55:33.481+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-12T05:55:33.527+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-1] c.s.c.o.Controller.AdminControllers      : Admin view using phone number : 9876543219 time : 2026-04-12T05:55:33.527072300
+2026-04-12T05:55:33.595+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-1] c.s.c.o.Controller.AdminControllers      : Error while viewing admin using phone number : 9876543219 time : 2026-04-12T05:55:33.595035300
+2026-04-12T05:56:17.923+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-3] c.s.c.o.Controller.AdminControllers      : Admin view using phone number : 9638527410 time : 2026-04-12T05:56:17.923941100
+2026-04-12T05:56:17.931+05:30  INFO 28404 --- [Online-Voting-System] [http-nio-9061-exec-3] c.s.c.o.Controller.AdminControllers      : Error while viewing admin using phone number : 9638527410 time : 2026-04-12T05:56:17.931656800
+2026-04-12T05:56:45.849+05:30  INFO 28404 --- [Online-Voting-System] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-12T05:56:45.852+05:30  INFO 28404 --- [Online-Voting-System] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-12T05:56:45.859+05:30  INFO 28404 --- [Online-Voting-System] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-12T05:56:48.693+05:30  INFO 2372 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Starting OnlineVotingSystemApplication using Java 21.0.10 with PID 2372 (D:\Projects\Online-Voting-System\target\classes started by sayan in D:\Projects\Online-Voting-System)
+2026-04-12T05:56:48.694+05:30  INFO 2372 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-04-12T05:56:49.085+05:30  INFO 2372 --- [Online-Voting-System] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-12T05:56:49.147+05:30  INFO 2372 --- [Online-Voting-System] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 8 JPA repository interfaces.
+2026-04-12T05:56:49.448+05:30  INFO 2372 --- [Online-Voting-System] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9061 (http)
+2026-04-12T05:56:49.458+05:30  INFO 2372 --- [Online-Voting-System] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-12T05:56:49.458+05:30  INFO 2372 --- [Online-Voting-System] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-12T05:56:49.491+05:30  INFO 2372 --- [Online-Voting-System] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-12T05:56:49.492+05:30  INFO 2372 --- [Online-Voting-System] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 770 ms
+2026-04-12T05:56:49.586+05:30  INFO 2372 --- [Online-Voting-System] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-12T05:56:49.615+05:30  INFO 2372 --- [Online-Voting-System] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-12T05:56:49.635+05:30  INFO 2372 --- [Online-Voting-System] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-12T05:56:49.782+05:30  INFO 2372 --- [Online-Voting-System] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-12T05:56:49.805+05:30  INFO 2372 --- [Online-Voting-System] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-12T05:56:49.896+05:30  INFO 2372 --- [Online-Voting-System] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@286866cb
+2026-04-12T05:56:49.897+05:30  INFO 2372 --- [Online-Voting-System] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-12T05:56:49.931+05:30  WARN 2372 --- [Online-Voting-System] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-12T05:56:50.580+05:30  INFO 2372 --- [Online-Voting-System] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-12T05:56:50.674+05:30  INFO 2372 --- [Online-Voting-System] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-12T05:56:50.804+05:30  INFO 2372 --- [Online-Voting-System] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-12T05:56:50.909+05:30  WARN 2372 --- [Online-Voting-System] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-12T05:56:51.138+05:30  INFO 2372 --- [Online-Voting-System] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9061 (http) with context path ''
+2026-04-12T05:56:51.143+05:30  INFO 2372 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Started OnlineVotingSystemApplication in 2.713 seconds (process running for 3.079)
+2026-04-12T05:56:53.650+05:30  INFO 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-12T05:56:53.650+05:30  INFO 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-12T05:56:53.652+05:30  INFO 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-12T05:56:53.694+05:30  INFO 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] c.s.c.o.Controller.AdminControllers      : Admin view using phone number : 9638527410 time : 2026-04-12T05:56:53.694391700
+2026-04-12T05:56:53.811+05:30  WARN 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1146, SQLState: 42S02
+2026-04-12T05:56:53.811+05:30 ERROR 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Table 'onlinevote.Admin' doesn't exist
+2026-04-12T05:56:53.818+05:30  INFO 2372 --- [Online-Voting-System] [http-nio-9061-exec-1] c.s.c.o.Controller.AdminControllers      : Error while viewing admin using phone number : 9638527410 time : 2026-04-12T05:56:53.818473100
+2026-04-12T05:57:09.235+05:30  INFO 2372 --- [Online-Voting-System] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-12T05:57:09.238+05:30  INFO 2372 --- [Online-Voting-System] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-12T05:57:09.244+05:30  INFO 2372 --- [Online-Voting-System] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-12T05:57:11.828+05:30  INFO 10984 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Starting OnlineVotingSystemApplication using Java 21.0.10 with PID 10984 (D:\Projects\Online-Voting-System\target\classes started by sayan in D:\Projects\Online-Voting-System)
+2026-04-12T05:57:11.830+05:30  INFO 10984 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-04-12T05:57:12.245+05:30  INFO 10984 --- [Online-Voting-System] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-12T05:57:12.302+05:30  INFO 10984 --- [Online-Voting-System] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 8 JPA repository interfaces.
+2026-04-12T05:57:12.621+05:30  INFO 10984 --- [Online-Voting-System] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9061 (http)
+2026-04-12T05:57:12.631+05:30  INFO 10984 --- [Online-Voting-System] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-12T05:57:12.631+05:30  INFO 10984 --- [Online-Voting-System] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-12T05:57:12.666+05:30  INFO 10984 --- [Online-Voting-System] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-12T05:57:12.666+05:30  INFO 10984 --- [Online-Voting-System] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 806 ms
+2026-04-12T05:57:12.763+05:30  INFO 10984 --- [Online-Voting-System] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-12T05:57:12.799+05:30  INFO 10984 --- [Online-Voting-System] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-12T05:57:12.820+05:30  INFO 10984 --- [Online-Voting-System] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-12T05:57:12.970+05:30  INFO 10984 --- [Online-Voting-System] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-12T05:57:12.993+05:30  INFO 10984 --- [Online-Voting-System] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-12T05:57:13.096+05:30  INFO 10984 --- [Online-Voting-System] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@786a3477
+2026-04-12T05:57:13.097+05:30  INFO 10984 --- [Online-Voting-System] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-12T05:57:13.133+05:30  WARN 10984 --- [Online-Voting-System] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-12T05:57:13.813+05:30  INFO 10984 --- [Online-Voting-System] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-12T05:57:13.901+05:30  INFO 10984 --- [Online-Voting-System] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-12T05:57:14.042+05:30  INFO 10984 --- [Online-Voting-System] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-12T05:57:14.133+05:30  WARN 10984 --- [Online-Voting-System] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-12T05:57:14.376+05:30  INFO 10984 --- [Online-Voting-System] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9061 (http) with context path ''
+2026-04-12T05:57:14.381+05:30  INFO 10984 --- [Online-Voting-System] [main] c.s.c.o.OnlineVotingSystemApplication    : Started OnlineVotingSystemApplication in 2.812 seconds (process running for 3.177)
+2026-04-12T05:57:17.680+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-12T05:57:17.681+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-12T05:57:17.682+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-12T05:57:17.725+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-1] c.s.c.o.Controller.AdminControllers      : Admin view using phone number : 9638527410 time : 2026-04-12T05:57:17.725979800
+2026-04-12T05:57:28.446+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-4] c.s.c.o.Controller.AdminControllers      : Session ID : 
+2026-04-12T05:57:28.447+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-4] c.s.c.o.Controller.AdminControllers      : Admin view: null2026-04-12T05:57:28.446246100
+2026-04-12T05:57:28.466+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-4] c.s.c.o.Controller.AdminControllers      : Session ID : 
+2026-04-12T05:57:28.466+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-4] c.s.c.o.Controller.AdminControllers      : Error while viewing admin : null2026-04-12T05:57:28.466637400
+2026-04-12T05:57:49.379+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-3] c.s.c.o.Controller.AdminControllers      : Login e572ac42
+2026-04-12T05:57:49.379+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-3] c.s.c.o.Controller.AdminControllers      : Session ID : 629022EB573B3D29FB20AA2C5D9F9DDC
+2026-04-12T05:57:49.684+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-3] c.s.c.o.Controller.AdminControllers      : Login successful2026-04-12T05:57:49.684167800
+2026-04-12T05:57:52.825+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-5] c.s.c.o.Controller.AdminControllers      : Session ID : 
+2026-04-12T05:57:52.825+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-5] c.s.c.o.Controller.AdminControllers      : Admin view: null2026-04-12T05:57:52.825350800
+2026-04-12T05:57:52.831+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-5] c.s.c.o.Controller.AdminControllers      : Session ID : 
+2026-04-12T05:57:52.831+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-5] c.s.c.o.Controller.AdminControllers      : Error while viewing admin : null2026-04-12T05:57:52.831452
+2026-04-12T05:58:01.959+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-6] c.s.c.o.Controller.AdminControllers      : Session ID : 
+2026-04-12T05:58:02.219+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-6] c.s.c.o.Controller.AdminControllers      : Logout successful2026-04-12T05:58:02.219953100
+2026-04-12T05:58:02.219+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-6] c.s.c.o.Controller.AdminControllers      : Session ID : 
+2026-04-12T05:58:02.219+05:30  INFO 10984 --- [Online-Voting-System] [http-nio-9061-exec-6] c.s.c.o.Controller.AdminControllers      : Deleting Session for : e572ac422026-04-12T05:58:02.219953100
+2026-04-12T05:58:14.913+05:30  INFO 10984 --- [Online-Voting-System] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-12T05:58:14.916+05:30  INFO 10984 --- [Online-Voting-System] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-12T05:58:14.922+05:30  INFO 10984 --- [Online-Voting-System] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
