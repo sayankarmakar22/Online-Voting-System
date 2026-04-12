@@ -68,8 +68,14 @@ public class AdminServicesImpl implements AdminServices {
     }
 
     @Override
-    public DTOAdmin viewAdmin(String id) {
-        Admin admin = adminRepo.findById(id).get();
+    public DTOAdmin viewAdmin(String id,String type) {
+        Admin admin = null;
+        if(type.equals("id")){
+         admin= adminRepo.findById(id).get();
+        }
+        if(type.equals("ph")){
+            admin = adminRepo.findByadmin_phone(id);
+        }
         if(admin.getActive().equals(ActiveStatus.FALSE))
             return null;
         DTOAdmin admin1 = new DTOAdmin(

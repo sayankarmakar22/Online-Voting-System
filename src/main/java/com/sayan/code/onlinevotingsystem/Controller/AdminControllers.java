@@ -53,12 +53,24 @@ public class AdminControllers {
         try {
             log.info("Session ID : " , session.getId());
             log.info("Admin view: " + admin_id + LocalDateTime.now());
-            DTOAdmin viewAdmin = adminServices.viewAdmin(admin_id);
+            DTOAdmin viewAdmin = adminServices.viewAdmin(admin_id,"id");
             return new ResponseEntity<>(viewAdmin,HttpStatus.ACCEPTED);
         }
         catch (Exception e){
             log.info("Session ID : " , session.getId());
             log.info("Error while viewing admin : " + admin_id + LocalDateTime.now());
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/view/ph/{ph_no}")
+    public ResponseEntity<DTOAdmin> viewPh(@PathVariable String ph_no) {
+        try {
+            log.info("Admin view using phone number : {} time : {}", ph_no , LocalDateTime.now());
+            DTOAdmin viewAdmin = adminServices.viewAdmin(ph_no,"ph");
+            return new ResponseEntity<>(viewAdmin,HttpStatus.ACCEPTED);
+        }
+        catch (Exception e){
+            log.info("Error while viewing admin using phone number : {} time : {}" , ph_no , LocalDateTime.now());
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
     }
