@@ -16,7 +16,9 @@ public interface UserServices {
 
     List<Candidate> viewCandidateList(String constituency_id);
 
-    DTOVoter viewProfile(String epic_num);
+    DTOVoter viewProfile(String id);
+
+    DTOVoter viewProfileByPhone(String phn);
 
     boolean castVote(String epic_num);
 

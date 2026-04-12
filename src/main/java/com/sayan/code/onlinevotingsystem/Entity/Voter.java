@@ -23,8 +23,8 @@ public class Voter {
     @Column(nullable = false,length = 12)
     private String dob;
 
-    @Column(unique = true,length = 13)
-    private String phone_number;
+    @Column(name = "phone_number",unique = true,length = 13)
+    private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     private ActiveStatus active;
