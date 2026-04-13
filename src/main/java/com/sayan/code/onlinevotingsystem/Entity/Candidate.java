@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
 @SuppressWarnings("ALL")
 @Data
 @NoArgsConstructor
@@ -28,6 +30,9 @@ public class Candidate {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "phone_number",nullable = false,unique = true)
+    private String phoneNumber;
+
     @ManyToOne
     @JoinColumn(name = "party_id")
     private Party party;
@@ -45,4 +50,29 @@ public class Candidate {
 
     @OneToOne(mappedBy = "candidate")
     private VoteResult voteResult;
+
+    public Candidate(
+            String id,
+            String name,
+            String address,
+            String dob,
+            Role role,
+            String phnNum,
+            Optional<Party> byId,
+            ActiveStatus activeStatus,
+            Optional<Constituency> byId1,
+            Optional<Election> byId2)
+    {
+        this.cand_id = id;
+        this.name = name;
+        this.address = address;
+        this.dob = dob;
+        this.role = role;
+        this.phoneNumber = phnNum;
+        this.party = byId.isPresent() ? byId.get() : null;
+        this.active = activeStatus;
+        this.constituency = byId1.isPresent() ? byId1.get() : null;
+        this.election_id = byId2.isPresent() ? byId2.get() : null;
+    }
+
 }
