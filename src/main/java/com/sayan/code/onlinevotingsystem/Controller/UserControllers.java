@@ -69,21 +69,35 @@ public class UserControllers {
     public ResponseEntity<DTOVoter> viewProfile(
             HttpSession session)
     {
+        String epic_id = (String) session.getAttribute("Voter_EpicID");
         try{
-            DTOVoter userProfile = userServicesImpl
-                    .viewProfile(
-                            session
-                                    .getAttribute("Voter_EpicID")
-                                    .toString()
-                    );
-            log.info("Viewing Voter_EpicID : ", session.getAttribute("Voter_EpicID").toString());
+            DTOVoter userProfile = userServicesImpl.viewProfile(epic_id);
+            log.info("Viewing Voter_EpicID : {}", epic_id);
             return new ResponseEntity<>(userProfile,HttpStatus.FOUND);
         }
         catch (Exception e){
-            log.error("error in viewProfile" + session.getAttribute("Voter_EpicID").toString());
+            log.error("error in viewProfile : {} ", epic_id);
+            log.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/profile/ph/{ph_no}")
+    public ResponseEntity<DTOVoter> viewProfileByPh(
+            @PathVariable String ph_no)
+    {
+        try{
+            DTOVoter userProfile = userServicesImpl.viewProfileByPhone( ph_no);
+            log.info("Viewing voter profile by using phone number {} : ", ph_no);
+            return new ResponseEntity<>(userProfile,HttpStatus.FOUND);
+        }
+        catch (Exception e){
+            log.error("Error while fetching voter profile by using phone number : {}", ph_no);
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/register")
     public ResponseEntity<DTOVoter> userRegister(
             @RequestBody RegisterVoterDTO registerVoterDTO)

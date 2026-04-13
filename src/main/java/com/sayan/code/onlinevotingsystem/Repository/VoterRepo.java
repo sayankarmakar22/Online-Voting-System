@@ -17,4 +17,9 @@ public interface VoterRepo extends JpaRepository<Voter, String> {
     @Query(value = "select * from voter where constituency_id =:consId",nativeQuery = true)
     List<Voter> getAllVoterByConId(@Param("consId") String consId);
 
+    @Query(value = "select * from voter where phone_number=:ph", nativeQuery = true)
+    Voter findVoterByPh_no(@Param("ph") String ph);
+
+    Voter findByphoneNumber(String phoneNumber);
+
 }
