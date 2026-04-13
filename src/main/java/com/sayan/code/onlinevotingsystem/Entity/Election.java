@@ -20,6 +20,11 @@ public class Election {
     @Id
     private String election_id;
 
+    /*
+        NATIONAL_LEVEL,
+        STATE_LEVEL,
+        LOCAL_LEVEL
+     */
     @Enumerated(EnumType.STRING)
     private VoteType type;
 
@@ -27,6 +32,14 @@ public class Election {
 
     private Date end_date;
 
+    /*
+        NOT_STARTED,
+        IN_PROGRESS,
+        DATE_PUBLISHED,
+        ON_GOING,
+        CLOSED,
+        RESULT_PUBLISHED
+     */
     @Enumerated(EnumType.STRING)
     private Status status;
 

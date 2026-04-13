@@ -1,11 +1,13 @@
 package com.sayan.code.onlinevotingsystem.Service.Implementation;
 
 import com.sayan.code.onlinevotingsystem.DTOs.DTOAdmin;
+import com.sayan.code.onlinevotingsystem.DTOs.DTOCandidate;
 import com.sayan.code.onlinevotingsystem.ENUMS.ActiveStatus;
 import com.sayan.code.onlinevotingsystem.ENUMS.Role;
 import com.sayan.code.onlinevotingsystem.Entity.Admin;
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Voter;
+import com.sayan.code.onlinevotingsystem.Helper.ConvertToDTOCandidate;
 import com.sayan.code.onlinevotingsystem.Repository.AdminRepo;
 import com.sayan.code.onlinevotingsystem.Repository.CandidateRepo;
 import com.sayan.code.onlinevotingsystem.Repository.ConstituencyRepo;
@@ -101,9 +103,16 @@ public class AdminServicesImpl implements AdminServices {
     }
 
     @Override
-    public List<Candidate> getAllCandidatesByConstituency(String constituency_id) {
+    public List<DTOCandidate> getAllCandidatesByConstituency(String constituency_id) {
         log.info("Starting the getAllCandidatesByConstituency" + LocalDateTime.now());
-        return candidateRepo.findByConstituency_id(constituency_id);
+        List<Candidate> candidateList = candidateRepo.findByConstituency_id(constituency_id);
+
+        List<DTOCandidate> dtoCandidateList = new ArrayList<>();
+
+        for(Candidate candidate : candidateList){
+            dtoCandidateList.add(ConvertToDTOCandidate.convert(candidate));
+        }
+        return dtoCandidateList;
     }
 
     @Override

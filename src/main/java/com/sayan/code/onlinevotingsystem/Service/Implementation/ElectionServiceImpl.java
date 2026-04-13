@@ -1,25 +1,40 @@
 package com.sayan.code.onlinevotingsystem.Service.Implementation;
 
+import com.sayan.code.onlinevotingsystem.DTOs.DTOCandidate;
+import com.sayan.code.onlinevotingsystem.DTOs.DTOElection;
+import com.sayan.code.onlinevotingsystem.ENUMS.Status;
+import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Election;
 import com.sayan.code.onlinevotingsystem.Entity.VoteResult;
+import com.sayan.code.onlinevotingsystem.Entity.VoteStatus;
+import com.sayan.code.onlinevotingsystem.Helper.ConvertToDTOCandidate;
 import com.sayan.code.onlinevotingsystem.Repository.ElectionRepo;
 import com.sayan.code.onlinevotingsystem.Service.ElectionServices;
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Service
+@Slf4j
 public class ElectionServiceImpl implements ElectionServices {
     @Autowired
     private ElectionRepo electionRepo;
 
 
     @Override
-    public String addElection(Election election) {
+    public String addElection(DTOElection dtoElection) {
+        Election election = new Election();
+
         election.setElection_id(UUID.randomUUID().toString().substring(0, 8));
         election.setCreated_at(new Date());
+        election.setEnd_date(dtoElection.getEnd_date());
+        election.setStart_date(dtoElection.getStart_date());
+        election.setStatus(Status.DATE_PUBLISHED);
+        election.setType(dtoElection.getType());
+
         return electionRepo.save(election).getElection_id();
     }
 
@@ -32,39 +47,18 @@ public class ElectionServiceImpl implements ElectionServices {
     }
 
     @Override
-    public String closeElection(String id) {
-        int closed = electionRepo.closeElection(id, "CLOSED");
-        if(closed >= 1){
-            return "CLOSED";
+    @Transactional
+    public String modifyStatus(String id, Status voteStatus) {
+        Election election = electionRepo.findById(id).orElseThrow();
+        election.setStatus(voteStatus);
+        Election updated = electionRepo.save(election);
+
+        if(id.equals(updated.getElection_id())){
+            return "Modified The Election Status To : " + voteStatus;
         }
-        return "not closed";
+        return "Modification Failed";
     }
 
-    @Override
-    public Election updateElection(Election election) {
-        if(electionRepo.existsById(election.getElection_id())){
-            election.setCreated_at(new Date());
-            return electionRepo.save(election);
-        }
-        return null;
-    }
 
-    @Override
-    public boolean publishElection(String id) {
-        int rows = electionRepo.publishElection(id,"DATE_PUBLISHED");
-        if(rows >= 1){
-            return true;
-        }
-        return false;
-    }
 
-    @Override
-    public boolean generateResult(String cons_id, String admin_id) {
-        return false;
-    }
-
-    @Override
-    public boolean publishResult(String cons_id, String admin_id) {
-        return false;
-    }
 }
