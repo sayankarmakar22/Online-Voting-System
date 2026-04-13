@@ -1,6 +1,7 @@
 package com.sayan.code.onlinevotingsystem.Controller;
 
 import com.sayan.code.onlinevotingsystem.DTOs.DTOAdmin;
+import com.sayan.code.onlinevotingsystem.DTOs.DTOCandidate;
 import com.sayan.code.onlinevotingsystem.Entity.Admin;
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Voter;
@@ -128,7 +129,7 @@ public class AdminControllers {
     }
 
     @GetMapping("/get/candidate/constituency/{constituency_id}")
-    public ResponseEntity<List<Candidate>> getCandidateConstituency(@PathVariable String constituency_id) {
+    public ResponseEntity<List<DTOCandidate>> getCandidateConstituency(@PathVariable String constituency_id) {
         return new ResponseEntity<>(adminServices.getAllCandidatesByConstituency(constituency_id), HttpStatus.ACCEPTED);
     }
     @GetMapping("/get/voter/constituency/{constituency_id}")
