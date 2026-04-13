@@ -29,4 +29,8 @@ public class Constituency {
     private List<Voter> voters;
 
 
+    public Constituency(String id, String name) {
+        this.constituency_id = id;
+        this.constituency_name = name;
+    }
 }

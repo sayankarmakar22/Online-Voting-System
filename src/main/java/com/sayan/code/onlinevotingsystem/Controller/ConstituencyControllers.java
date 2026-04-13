@@ -1,7 +1,9 @@
 package com.sayan.code.onlinevotingsystem.Controller;
 
+import com.sayan.code.onlinevotingsystem.DTOs.DTOConstituency;
 import com.sayan.code.onlinevotingsystem.Entity.Constituency;
 import com.sayan.code.onlinevotingsystem.Repository.ConstituencyRepo;
+import com.sayan.code.onlinevotingsystem.Service.Implementation.ConstituencyServicesImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,30 +20,36 @@ import java.util.Optional;
 public class ConstituencyControllers {
 
     @Autowired
-    private ConstituencyRepo constituencyRepo;
+    private ConstituencyServicesImpl constituencyServices;
 
-    @PostMapping("/register")
-    public ResponseEntity<String> registerConstituency(@RequestBody Constituency constituency)
+    @PostMapping("/register/{cons_name}")
+    public ResponseEntity<String> registerConstituency(@PathVariable String cons_name)
     {
         log.info("Registering constituency, ", new Date().toString());
-        constituencyRepo.save(constituency);
-        return new ResponseEntity<>("Successfully registered", HttpStatus.CREATED);
+        String registered = constituencyServices.register(cons_name);
+        return new ResponseEntity<>("Successfully registered , ID : " + registered, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Constituency> getConstituencyById(
+    public ResponseEntity<DTOConstituency> getConstituencyById(
             @PathVariable String id)
     {
-        log.info("Getting constituency by id, ", new Date().toString());
-        Optional<Constituency> constituency = constituencyRepo.findById(id);
-        return new ResponseEntity<>(constituency.orElse(new Constituency()), HttpStatus.OK);
+        log.info("Getting constituency by ID : ", id);
+        DTOConstituency constituency = constituencyServices.view(id);
+        return new ResponseEntity<>(constituency, HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{cons_name}")
+    public ResponseEntity<DTOConstituency> getByName(@PathVariable String cons_name)
+    {
+        return new ResponseEntity<>( constituencyServices.viewByName(cons_name),HttpStatus.FOUND);
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Constituency>> getAllConstituency()
+    public ResponseEntity<List<DTOConstituency>> getAllConstituency()
     {
         log.info("Getting all constituency, ", new Date().toString());
-        List<Constituency> constituencies = constituencyRepo.findAll();
-        return new ResponseEntity<>(constituencies, HttpStatus.OK);
+        List<DTOConstituency> constituencyList = constituencyServices.getAll();
+        return new ResponseEntity<>(constituencyList, HttpStatus.OK);
     }
 }
