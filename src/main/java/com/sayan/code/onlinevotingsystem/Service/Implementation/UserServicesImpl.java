@@ -46,7 +46,7 @@ public class UserServicesImpl implements UserServices {
             Voter voter = voterRepo.findById(epic_num).orElseThrow();
             return voter.getDob().equals(dob);
         }
-        else return false;
+        return false;
     }
 
     @Override

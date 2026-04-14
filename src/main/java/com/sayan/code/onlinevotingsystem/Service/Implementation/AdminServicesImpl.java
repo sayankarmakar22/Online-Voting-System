@@ -8,10 +8,7 @@ import com.sayan.code.onlinevotingsystem.Entity.Admin;
 import com.sayan.code.onlinevotingsystem.Entity.Candidate;
 import com.sayan.code.onlinevotingsystem.Entity.Voter;
 import com.sayan.code.onlinevotingsystem.Helper.ConvertToDTOCandidate;
-import com.sayan.code.onlinevotingsystem.Repository.AdminRepo;
-import com.sayan.code.onlinevotingsystem.Repository.CandidateRepo;
-import com.sayan.code.onlinevotingsystem.Repository.ConstituencyRepo;
-import com.sayan.code.onlinevotingsystem.Repository.VoterRepo;
+import com.sayan.code.onlinevotingsystem.Repository.*;
 import com.sayan.code.onlinevotingsystem.Security.SecurityTools;
 import com.sayan.code.onlinevotingsystem.Service.AdminServices;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +33,7 @@ public class AdminServicesImpl implements AdminServices {
     private CandidateRepo candidateRepo;
 
     @Autowired
-    private ConstituencyRepo constituencyRepo;
+    private AdminLoginDeviceServicesImpl adminLoginDeviceServices;
 
 
     @Autowired
@@ -90,14 +87,19 @@ public class AdminServicesImpl implements AdminServices {
 
     @Override
     public boolean login(String id, String password) {
-        Admin admin = adminRepo.findById(id).get();
-        return SecurityTools.verifyPassword(password, admin.getAdmin_password());
+        if("Allowed".equals(adminLoginDeviceServices.setLoginTrue(id))) {
+            Admin admin = adminRepo.findById(id).get();
+            return SecurityTools.verifyPassword(password, admin.getAdmin_password());
+        }
+        return false;
     }
 
     @Override
     public boolean logout(String id) {
-        if(adminRepo.existsById(id)){
-            return true;
+        if("logout".equals(adminLoginDeviceServices.setLoginFalse(id))) {
+            if (adminRepo.existsById(id)) {
+                return true;
+            }
         }
         return false;
     }
