@@ -37,15 +37,24 @@ public class UserServicesImpl implements UserServices {
     @Autowired
     private ConstituencyRepo constituencyRepo;
 
+    @Autowired
+    private VoterLoginDeviceServicesImpl voterLoginDeviceServices;
+
     @Override
     public boolean login(String epic_num, String dob) {
-        Voter voter = voterRepo.findById(epic_num).orElseThrow();
-        return voter.getDob().equals(dob);
+        if("Allowed".equals(voterLoginDeviceServices.setLoginTrue(epic_num))) {
+            Voter voter = voterRepo.findById(epic_num).orElseThrow();
+            return voter.getDob().equals(dob);
+        }
+        else return false;
     }
 
     @Override
     public boolean logout(String epic_num) {
-        return voterRepo.existsById(epic_num);
+        if("logout".equals(voterLoginDeviceServices.setLoginFalse(epic_num))) {
+            return voterRepo.existsById(epic_num);
+        }
+        return false;
 
     }
 

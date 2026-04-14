@@ -126,6 +126,7 @@ public class UserControllers {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    // change the candidate to DTOCandidate
     @GetMapping("/candidate-list")
     public ResponseEntity<List<Candidate>> viewCandidateList(
             HttpSession session)

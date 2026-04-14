@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Data
 @AllArgsConstructor
-//@Component
 public class DTOVoter {
     private String epic_id;
     private String name;
