@@ -1,5 +1,11 @@
 <configuration>
 
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
 
     <appender name ="VOTERS" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -34,5 +40,9 @@
     <logger name ="com.sayan.code.onlinevotingsystem.Controller.AdminControllers" level="DEBUG">
         <appender-ref ref="ADMIN"/>
     </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
 
 </configuration>
